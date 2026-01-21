@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block head %}
+    <style>
+        body {
+        font-family:'Lucida Console', monospace;
+        font-size: 18px;
+        color: #111;
+        background-color: white;
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 50px;
+        box-sizing: border-box;
+        }
+        .landing {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height:100vh; min-height:100dvh;
+        text-align: center;
+        }
+        .svg-container { width: 100%; max-width: 400px; margin: 0 auto; display: inline-block;}
+        .svg-container img { width: 100%; height: auto; display: block;}
+        .separator { letter-spacing: -9px; }
+        hr { border: none; height: 2px; background-color: lightgrey; width: 100%; margin: 30px auto; }
+        .quiet, .links-container a { color: inherit; }
+        .links-container { font-size: 24px; margin: 20px; }
+        .links-container a { text-decoration: none; margin: 0 10px; }
+        .rho {color: #4C9D9B;}
+    </style>
+{% endblock head %}
+
+{% block content %}
+<div class="landing">
+    <div class="svg-container">
+        <img src="logo.svg" alt="logo">
+    </div>
+    <div class="links-container">
+        <a href="#rho">rho</a><span class="separator">|</span>
+        <a href="#events">events</a><span class="separator">|</span>
+        <a href="#blog">blog</a><span class="separator">|</span>
+        <a href="https://github.com/rhoweb">github</a>
+    </div>
+</div>
+<hr>
+<h2 id="rho">rho / ramaiah hardware org</h2>
+<p><span class="rho">r</span>it <span class="rho">h</span>ardware <span class="rho">o</span>rg, or <span class="rho">rho 𝜌</span> for short, aims to be the first electronics club of its kind in RIT. we explore free and open source tools for hardware design, from device physics simulation to IC design to PCB design.</p>
+
+<hr>
+
+<h2 id="events">events</h2>
+
+{% endblock content %}
