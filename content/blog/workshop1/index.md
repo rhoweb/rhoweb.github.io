@@ -47,9 +47,27 @@ Back in the macOS terminal, execute
 ```bash
  ./start_<mode>.sh
 ```
-where `<mode>` = [shell, x, vnc] is replaced with the desired mode of operation of the image. Upon first execution, also conveniently pulls the docker image located at hpretl/iic-osic-tools. Please wait as this can take very long (10-20 minutes, depending on your internet connection and luck), and once done it creates the container if it doesn't exist.
+where `<mode>` = [shell, x, vnc] is replaced with the desired mode of operation of the image. Upon first execution, the script also conveniently pulls the docker image located at hpretl/iic-osic-tools. Please wait as this can take very long (10-20 minutes, depending on your internet connection and luck), and once done it creates the container if it doesn't exist.
 ![alt text](image-3.png)
 In regular usage, it prompts you asking you if you want to start/remove it, and choose to start it. Note that removing the container deletes any configuration you may have done on it due to its ephemerality, so **refrain** from removing it unless you know what you are doing.
 ![alt text](image-2.png)
 
-Et voilà! You can now use the vast assortment of tools that IIC-OSIC-TOOLS makes available, such as
+Et voilà! You can now use the vast assortment of tools that IIC-OSIC-TOOLS makes available, such as OpenROAD, Librelane, KLayout, Magic, among others.
+
+### Linux
+TODO
+
+### Windows
+TODO
+
+## installing OpenROAD
+
+For this demo, we will be using OpenROAD and exploring the OpenROAD Flow Scripts (ORFS) automated design flow. We clone the ORFS repo and checkout to a stable tested version.
+```bash
+git clone https://github.com/The-OpenROAD-Project/OpenROAD-flow-scripts.git && cd OpenROAD-flow-scripts
+git checkout $(cat $TOOLS/openroad-latest/ORFS_COMMIT)
+```
+
+## installing Devsim
+
+## installing 
