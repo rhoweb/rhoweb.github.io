@@ -10,7 +10,8 @@ build_search_index = false
 [markdown]
 
 [markdown.highlighting]
-theme = "catppuccin-mocha"
+theme = "solarized-light"
+error_on_missing_language = false
 
 [extra]
 # Put all your custom variables here

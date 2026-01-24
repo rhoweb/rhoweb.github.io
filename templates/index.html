@@ -1,16 +1,6 @@
 {% extends "base.html" %}
 {% block head %}
     <style>
-        body {
-        font-family:'Lucida Console', monospace;
-        font-size: 18px;
-        color: #111;
-        background-color: white;
-        max-width: 1280px;
-        margin: 0 auto;
-        padding: 0 50px;
-        box-sizing: border-box;
-        }
         .landing {
         display: flex;
         flex-direction: column;
@@ -22,11 +12,10 @@
         .svg-container { width: 100%; max-width: 400px; margin: 0 auto; display: inline-block;}
         .svg-container img { width: 100%; height: auto; display: block;}
         .separator { letter-spacing: -9px; }
-        hr { border: none; height: 2px; background-color: lightgrey; width: 100%; margin: 30px auto; }
         .quiet, .links-container a { color: inherit; }
         .links-container { font-size: 24px; margin: 20px; }
         .links-container a { text-decoration: none; margin: 0 10px; }
-        .rho {color: #4C9D9B;}
+        h2 a {text-decoration: none;}
     </style>
 {% endblock head %}
 
@@ -42,12 +31,30 @@
         <a href="https://github.com/rhoweb">github</a>
     </div>
 </div>
+
 <hr>
-<h2 id="rho">rho / ramaiah hardware org</h2>
-<p><span class="rho">r</span>it <span class="rho">h</span>ardware <span class="rho">o</span>rg, or <span class="rho">rho 𝜌</span> for short, aims to be the first electronics club of its kind in RIT. we explore free and open source tools for hardware design, from device physics simulation to IC design to PCB design.</p>
+<h2 id="rho">ramaiah hardware org</h2>
+<p><span class="rho">r</span>amaiah <span class="rho">h</span>ardware <span class="rho">o</span>rg, or <span class="rho">rho 𝜌</span> for short, aims to be the first electronics club of its kind in RIT. we explore free and open source tools for all kinds of hardware design, from device physics simulation to IC design to PCB design. our mission is to <span class="rho">democratize hardware design</span> -- incubate an environment for creative design unrestricted by licenses, NDAs and paywalls.</p>
 
 <hr>
 
-<h2 id="events">events</h2>
+<h2 id="events"><a href="{{ get_url(path='@/events/_index.md') }}">/events</a></h2>
+<p>
+    {% set events_section = get_section(path="events/_index.md") %}
+    {% for page in events_section.pages | slice(end=3) %} <a href="{{ page.permalink | safe }}">{{ page.title }}</a> / {{ page.date }}
+    <br>
+    {% endfor %}
+</p>
+<hr>
+
+<h2 id="blog"><a href="{{ get_url(path='@/blog/_index.md') }}">/blog</a></h2>
+<p>
+    {% set blog_section = get_section(path="blog/_index.md") %}
+    {% for page in blog_section.pages | slice(end=3) %} <a href="{{ page.permalink | safe }}">{{ page.title }}</a> / {{ page.date }}
+    <br>
+    {% endfor %}
+</p>
+
+<p class="footer">© 2026 -- Mohit Lingarkar</p>
 
 {% endblock content %}
