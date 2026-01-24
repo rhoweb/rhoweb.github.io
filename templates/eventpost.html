@@ -1,9 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 class="title">
-  {{ page.title }}
+<h1 class="rho">
+  {{ page.title }} <span style="font-size: 14px;">{{page.date}}</span>
 </h1>
-<p class="subtitle"><strong>{{ page.date }}</strong></p>
+
+{% if page.toc %}
+    <nav class="toc">
+    {% for h1 in page.toc %}
+        <div class="toc-h1">
+            <a href="{{ h1.permalink | safe }}">{{ h1.title }}</a>
+        </div>
+        {% if h1.children %}
+            {% for h2 in h1.children %}
+                <div class="toc-h2">
+                    <a href="{{ h2.permalink | safe }}">{{ h2.title }}</a>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+    </nav>
+{% endif %}
+
 {{ page.content | safe }}
 {% endblock content %}

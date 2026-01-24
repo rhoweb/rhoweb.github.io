@@ -61,13 +61,17 @@ TODO
 TODO
 
 ## installing OpenROAD
-
 For this demo, we will be using OpenROAD and exploring the OpenROAD Flow Scripts (ORFS) automated design flow. We clone the ORFS repo and checkout to a stable tested version.
 ```bash
 git clone https://github.com/The-OpenROAD-Project/OpenROAD-flow-scripts.git && cd OpenROAD-flow-scripts
 git checkout $(cat $TOOLS/openroad-latest/ORFS_COMMIT)
 ```
-
+In order to use OpenROAD with IIC-OSIC-TOOLS, we need to set a few environment variables in the container (not your system terminal). After starting the container (preferably in X11 mode, from now on) add this to the .bashrc config file (found at $HOME/.bashrc):
+```bash
+export YOSYS_EXE=$TOOLS/yosys/bin/yosys
+export OPENROAD_EXE=$TOOLS/openroad/bin/openroad
+export OPENSTA_EXE=$TOOLS/openroad/bin/opensta
+```
 ## installing Devsim
 
 ## installing 
