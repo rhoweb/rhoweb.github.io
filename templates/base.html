@@ -85,7 +85,7 @@
                 box-sizing: border-box;
             }
             .rho {color: #4C9D9B;}
-            .footer {color: grey; text-align: center; display: block; margin-top: 60px; margin-bottom: 60px;}
+            .footer {color: grey; text-align: center; display: block; margin-top: 60px; margin-bottom: 60px; font-size: 2em;}
             hr { border: none; height: 2px; background-color: lightgrey; width: 100%; margin: 30px auto; }
             .giallo-l {
                 display: inline-block;
@@ -122,6 +122,15 @@
                 font-size: 0.95em;
             }
 
+            a {
+                text-decoration: none;
+                color: inherit;
+            }
+
+            a:hover {
+                color: #4C9D9B;
+            }
+
             .toc a {
                 text-decoration: none;
                 color: inherit;
@@ -136,5 +145,6 @@
 </head>
 <body>
   {% block content %}{% endblock content %}
+  <p class="footer"><a href="/">𝜌</a></p>
 </body>
 </html>
