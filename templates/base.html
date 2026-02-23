@@ -103,8 +103,15 @@
                 opacity: 0.8;
             }
             img {
-            max-width: 100%;
+            display: block;
+            max-width: 40%;
             height: auto;
+            cursor: pointer;
+            transition: max-width 0.3s ease;
+            margin: 1em 0;
+            }
+            img.zoomed {
+            max-width: 100%;
             }
             .toc {
                 margin: 2em 0;
@@ -151,5 +158,6 @@
 <body>
   {% block content %}{% endblock content %}
   <p class="footer"><a href="/">𝜌</a></p>
+  <script>document.addEventListener('click',e=>{if(e.target.tagName==='IMG'&&!e.target.closest('.svg-container'))e.target.classList.toggle('zoomed')})</script>
 </body>
 </html>
