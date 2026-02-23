@@ -12,10 +12,9 @@
         .svg-container { width: 100%; max-width: 400px; margin: 0 auto; display: inline-block;}
         .svg-container img { width: 100%; height: auto; display: block;}
         .separator { letter-spacing: -9px; }
-        .quiet, .links-container a { color: inherit; }
+        .quiet { color: inherit; }
         .links-container { font-size: 24px; margin: 20px; }
-        .links-container a { text-decoration: none; margin: 0 10px; }
-        h2 a {text-decoration: none;}
+        .links-container a { margin: 0 10px; }
     </style>
 {% endblock head %}
 
@@ -27,14 +26,14 @@
     <div class="links-container">
         <a href="#rho">rho</a><span class="separator">|</span>
         <a href="#events">events</a><span class="separator">|</span>
-        <a href="#blog">blog</a><span class="separator">|</span>
+        <a href="#blogs">blogs</a><span class="separator">|</span>
         <a href="https://github.com/rhoweb">github</a>
     </div>
 </div>
 
 <hr>
 <h2 id="rho">ramaiah hardware org</h2>
-<p><span class="rho">r</span>amaiah <span class="rho">h</span>ardware <span class="rho">o</span>rg, or <span class="rho">rho 𝜌</span> for short, aims to be the first electronics club of its kind in RIT. we explore free and open source tools for all kinds of hardware design, from device physics simulation to IC design to PCB design. our mission is to <span class="rho">democratize hardware design</span> -- incubate an environment for creative design unrestricted by licenses, NDAs and paywalls.</p>
+<p><span class="rho">r</span>amaiah <span class="rho">h</span>ardware <span class="rho">o</span>rg, or <span class="rho">rho 𝜌</span> for short, aims to be the first electronics club of its kind in RIT. we explore free and open source tools for all kinds of hardware design, from device physics simulation to IC design to PCB design, and much more. our mission is to <span class="rho">democratize hardware design</span> -- incubate an environment for creative design unrestricted by licenses, NDAs and paywalls.</p>
 
 <hr>
 
@@ -47,14 +46,12 @@
 </p>
 <hr>
 
-<h2 id="blog"><a href="{{ get_url(path='@/blog/_index.md') }}">/blog</a></h2>
+<h2 id="blogs"><a href="{{ get_url(path='@/blogs/_index.md') }}">/blogs</a></h2>
 <p>
-    {% set blog_section = get_section(path="blog/_index.md") %}
+    {% set blog_section = get_section(path="blogs/_index.md") %}
     {% for page in blog_section.pages | slice(end=3) %} <a href="{{ page.permalink | safe }}">{{ page.title }}</a> / {{ page.date }}
     <br>
     {% endfor %}
 </p>
-
-<p class="footer">© 2026 -- Mohit Lingarkar</p>
 
 {% endblock content %}
