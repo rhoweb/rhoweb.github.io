@@ -86,9 +86,12 @@
                 box-sizing: border-box;
             }
             .rho {color: #4C9D9B;}
-            .footer {color: grey; text-align: center; display: block; margin-top: 60px; margin-bottom: 60px; font-size: 2em;}
+            .footer {text-align: center; display: block; margin-top: 60px; margin-bottom: 60px;}
             .footer a { text-decoration: none; }
-            .contact { font-size: 0.45em; margin-top: 1em; }
+            .footer-rho { color: grey; transition: color 0.2s; }
+            .footer-rho:hover { color: #4C9D9B; }
+            .footer-rho svg { width: 40px; height: auto; vertical-align: middle; }
+            .contact { font-size: 0.85em; margin-top: 1em; }
             hr { border: none; height: 2px; background-color: lightgrey; width: 100%; margin: 30px auto; }
             .giallo-l {
                 display: inline-block;
@@ -185,7 +188,7 @@
 <body>
   {% block content %}{% endblock content %}
   <div class="footer">
-    <a href="/">𝜌</a>
+    <a href="/" class="footer-rho"><svg viewBox="-1 -2 20 30" xmlns="http://www.w3.org/2000/svg"><text style="font-weight:bold;font-size:35.2777px;font-family:Helvetica;letter-spacing:-2.98979px;fill:currentColor" x="0.18" y="16.97">𝜌</text></svg></a>
     <p class="contact">
       <a href="mailto:kontaktrho@gmail.com">kontaktrho@gmail.com</a> · <a href="https://instagram.com/rhoclub">@rhoclub</a>
     </p>
