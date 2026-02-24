@@ -87,6 +87,8 @@
             }
             .rho {color: #4C9D9B;}
             .footer {color: grey; text-align: center; display: block; margin-top: 60px; margin-bottom: 60px; font-size: 2em;}
+            .footer a { text-decoration: none; }
+            .contact { font-size: 0.45em; margin-top: 1em; }
             hr { border: none; height: 2px; background-color: lightgrey; width: 100%; margin: 30px auto; }
             .giallo-l {
                 display: inline-block;
@@ -130,6 +132,11 @@
                 font-size: 0.95em;
             }
 
+            .toc-h3 {
+                margin: 0.2em 0 0.2em 3em;
+                font-size: 0.9em;
+            }
+
             a {
                 text-decoration: underline;
                 text-decoration-style: dotted;
@@ -143,21 +150,18 @@
                 text-decoration-style: solid;
             }
 
-            .toc a {
-                text-decoration: none;
-                color: inherit;
-            }
-
-            .toc a:hover {
-                color: #4C9D9B;
-            }
         </style>
 
         {% block head %}{% endblock head %}
 </head>
 <body>
   {% block content %}{% endblock content %}
-  <p class="footer"><a href="/">𝜌</a></p>
+  <div class="footer">
+    <a href="/">𝜌</a>
+    <p class="contact">
+      <a href="mailto:kontaktrho@gmail.com">kontaktrho@gmail.com</a> · <a href="https://instagram.com/rhoclub">@rhoclub</a>
+    </p>
+  </div>
   <script>document.addEventListener('click',e=>{if(e.target.tagName==='IMG'&&!e.target.closest('.svg-container'))e.target.classList.toggle('zoomed')})</script>
 </body>
 </html>

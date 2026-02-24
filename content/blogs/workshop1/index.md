@@ -1,9 +1,11 @@
 +++
-title = "inaugural workshop"
+title = "inaugural workshop prerequisites"
 date = 2026-01-24
 +++
 
-## initial setup
+## initial setup 
+(click to enlarge images)
+
 Create a project directory to contain all the relevant respositories and project sub-directories.
 ```bash
 mkdir ~/osic && cd ~/osic
@@ -12,53 +14,55 @@ Now, clone the [github repository](https://github.com/iic-jku/IIC-OSIC-TOOLS) re
 ```bash
 git clone --depth=1 https://github.com/iic-jku/iic-osic-tools.git
 ```
-From here, the steps slightly diverge depending on what platform you are using.
-
-
-### macOS
-Install the relevant Docker Desktop depending on your architecture (Intel / Silicon) from their [webpage](https://www.docker.com/products/docker-desktop/) and configure your account.
+### installing Docker
+- **macOS**: Install Docker Desktop for your architecture (Intel / Silicon) from their [webpage](https://www.docker.com/products/docker-desktop/) and configure your account.
 ![alt text](image.png)
-Now, back in the terminal, return to the directory where the IIC-OSIC-TOOLS repo is cloned to edit the startup scripts (start_x.sh, start_vnc.sh, start_shell.sh). We need to change the $DESIGN environment variable to set the directory that holds the design files. In this case, we will set it as $HOME/osic/designs.
-```bash,hl_lines=2
-if [ -z ${DESIGNS+z} ]; then
-	DESIGNS=$HOME/eda/designs # replace this with $HOME/osic/design
-	if [ ! -d "$DESIGNS" ]; then
-		${ECHO_IF_DRY_RUN} mkdir -p "$DESIGNS"
-	fi
-	[ -z "${IIC_OSIC_TOOLS_QUIET}" ] && echo "[INFO] Design directory
-    auto-set to $DESIGNS."
-fi
+- **Linux**: Install Docker Engine using the [official documentation](https://docs.docker.com/engine/install/) for your distribution. Make sure your user is in the `docker` group so you can run containers without `sudo`:
+```bash
+sudo usermod -aG docker $USER
 ```
-As we just saw, there are three modes of running the docker image, conveniently wrapped in scripts for us:
-1. start_vnc.sh is for the VNC mode of operation, which provides an XFCE desktop environment in the noVNC server integrated in your browser (not preferred, very clunky)
-2. start_shell.sh is for full root access without a graphical interface. This mode unfortunately cannot run GUI applications such as OpenROAD and KLayout, for instance.
-3. start_x.sh is for the X11 mode of operation, which runs on the local X11 server, enabling you to run GUI applications. For macOS, this requires installation of XQuartz, the X11 server for macOS and some setup for port forwarding the docker container as follows:
+Log out and back in for the group change to take effect. (Untested on Wayland, but should probably work.)
+- **Windows**: I would strongly suggest against using Windows due to the sheer amount of config and potential troubleshooting required. But if you're up for it, you can refer to this [installation guide](https://kwantaekim.github.io/2024/05/25/OSE-Docker/#in--windows) which provides detailed steps for configuring WSL2, MobaXTerm, and other tools required to perform the installation.
 
-After installing XQuartz from the [website](https://www.xquartz.org/) / homebrew formula, open the app and navigate to the Settings window (Cmd + ,) > Security and enable the "Allow connections from network clients" setting.
+### configuring the startup scripts
+We need to tell the startup scripts where our design files will live. Open each of the three scripts (**start_x.sh**, **start_vnc.sh**, **start_shell.sh**) in the cloned repo and find this line:
+```bash
+DESIGNS=$HOME/eda/designs
+```
+Replace it with:
+```bash
+DESIGNS=$HOME/osic/designs
+```
+
+There are three modes of running the docker image, conveniently wrapped in scripts for us:
+1. **start_vnc.sh** is for the VNC mode of operation, which provides an XFCE desktop environment in the noVNC server integrated in your browser (not preferred, very clunky)
+2. **start_shell.sh** is for full root access without a graphical interface. This mode unfortunately cannot run GUI applications such as OpenROAD and KLayout, for instance.
+3. **start_x.sh (recommended)** is for the X11 mode of operation, which runs on the local X11 server, enabling you to run GUI applications. **This is the mode we will be using for the workshop.**
+
+### macOS only: X11 port forwarding with XQuartz
+
+On macOS, X11 is not available natively so we need **XQuartz**. Linux users can skip ahead to [running the container](#running-the-container).
+
+After installing XQuartz from the [website](https://www.xquartz.org/) / homebrew formula, open the app and navigate to **Settings window (Cmd + ,) > Security** and enable the **"Allow connections from network clients"** setting.
 
 ![alt text](image-1.png)
-Then, enter the following command in the XQuartz terminal to allow network connections
+Then, enter the following command in the XQuartz terminal to allow network connections:
 ```bash
 xhost + 127.0.0.1
 ```
-Note that it is normal for the XQuartz terminal to look slightly broken if you are using custom themes (Oh-My-Zsh, etc.). You can close the XQuartz application, the relevant script will launch it automatically. 
+Note that it is normal for the XQuartz terminal to look slightly broken if you are using custom themes (Oh-My-Zsh, etc.). You can close the XQuartz application, the relevant script will launch it automatically.
 
-Back in the macOS terminal, execute
+### running the container
+Execute:
 ```bash
- ./start_<mode>.sh
+./start_x.sh
 ```
-where `<mode>` = [shell, x, vnc] is replaced with the desired mode of operation of the image. Upon first execution, the script also conveniently pulls the docker image located at hpretl/iic-osic-tools. Please wait as this can take very long (10-20 minutes, depending on your internet connection and luck), and once done it creates the container if it doesn't exist.
+Upon first execution, the script pulls the docker image located at hpretl/iic-osic-tools. **Please wait as this can take a while** (10-20 minutes, depending on your internet connection and luck), and once done it creates the container if it doesn't exist.
 ![alt text](image-3.png)
 In regular usage, it prompts you asking you if you want to start/remove it, and choose to start it. Note that removing the container deletes any configuration you may have done on it due to its ephemerality, so **refrain** from removing it unless you know what you are doing.
 ![alt text](image-2.png)
 
 Et voilà! You can now use the vast assortment of tools that IIC-OSIC-TOOLS makes available, such as OpenROAD, Librelane, KLayout, Magic, among others.
-
-### Linux
-TODO
-
-### Windows
-TODO
 
 ## installing OpenROAD
 For this demo, we will be using OpenROAD and exploring the OpenROAD Flow Scripts (ORFS) automated design flow. We clone the ORFS repo and checkout to a stable tested version.
@@ -66,12 +70,11 @@ For this demo, we will be using OpenROAD and exploring the OpenROAD Flow Scripts
 git clone https://github.com/The-OpenROAD-Project/OpenROAD-flow-scripts.git && cd OpenROAD-flow-scripts
 git checkout $(cat $TOOLS/openroad-latest/ORFS_COMMIT)
 ```
-In order to use OpenROAD with IIC-OSIC-TOOLS, we need to set a few environment variables in the container (not your system terminal). After starting the container (preferably in X11 mode, from now on) add this to the .bashrc config file (found at $HOME/.bashrc):
+In order to use OpenROAD with IIC-OSIC-TOOLS, we need to set a few environment variables **in the container** (not your system terminal). After starting the container (preferably in X11 mode, from now on) add this to the **.bashrc** config file (found at $HOME/.bashrc):
 ```bash
 export YOSYS_EXE=$TOOLS/yosys/bin/yosys
 export OPENROAD_EXE=$TOOLS/openroad/bin/openroad
 export OPENSTA_EXE=$TOOLS/openroad/bin/opensta
 ```
-## installing Devsim
 
-## installing 
+and you're good to go (for now ;))
