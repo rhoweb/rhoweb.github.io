@@ -137,6 +137,34 @@
                 font-size: 0.9em;
             }
 
+            pre {
+                position: relative;
+            }
+
+            .copy-btn {
+                position: absolute;
+                top: 6px;
+                right: 6px;
+                background: none;
+                border: 1px solid #ccc;
+                color: #888;
+                font-family: inherit;
+                font-size: 0.75em;
+                padding: 2px 8px;
+                cursor: pointer;
+                opacity: 0;
+                transition: opacity 0.2s;
+            }
+
+            pre:hover .copy-btn {
+                opacity: 1;
+            }
+
+            .copy-btn:hover {
+                color: #4C9D9B;
+                border-color: #4C9D9B;
+            }
+
             a {
                 text-decoration: underline;
                 text-decoration-style: dotted;
@@ -163,5 +191,20 @@
     </p>
   </div>
   <script>document.addEventListener('click',e=>{if(e.target.tagName==='IMG'&&!e.target.closest('.svg-container'))e.target.classList.toggle('zoomed')})</script>
+  <script>
+    document.querySelectorAll('pre').forEach(pre => {
+      const btn = document.createElement('button');
+      btn.className = 'copy-btn';
+      btn.textContent = 'copy';
+      btn.addEventListener('click', () => {
+        const code = pre.querySelector('code');
+        navigator.clipboard.writeText((code || pre).textContent).then(() => {
+          btn.textContent = 'copied!';
+          setTimeout(() => btn.textContent = 'copy', 1500);
+        });
+      });
+      pre.appendChild(btn);
+    });
+  </script>
 </body>
 </html>
