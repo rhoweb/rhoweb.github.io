@@ -5,7 +5,7 @@
   {{ page.title }} <span style="font-size: 14px;">{{page.date}}</span>
 </h1>
 
-{% if page.toc %}
+{% if page.toc and not page.extra.hide_toc %}
     <nav class="toc">
     {% for h1 in page.toc %}
         <div class="toc-h1">

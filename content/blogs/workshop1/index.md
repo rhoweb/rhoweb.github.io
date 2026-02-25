@@ -3,6 +3,14 @@ title = "inaugural workshop prerequisites"
 date = 2026-01-24
 +++
 
+## what to bring
+Please bring a laptop with:
+- 4GB of RAM (16 recommended)
+- 10GB of free disk space prior to installation (15GB recommended)
+- the following installation of IIC-OSIC-TOOLS docker image and repository with configuration relevant to your OS.
+
+Please note that at the event network speeds are not guaranteed to be fast so it is strongly recommended to come with everything locally installed. If you have any problems with configuration please reach out to [kontaktrho@gmail.com](kontaktrho@gmail.com) or send a message in our [discord server](https://discord.gg/kDBPrpqW). 
+
 ## initial setup 
 (click to enlarge images)
 
