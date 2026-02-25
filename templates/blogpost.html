@@ -1,5 +1,25 @@
 {% extends "base.html" %}
 
+{% block head %}
+<style>
+    .blog-content { counter-reset: h2counter; }
+    .blog-content h2 { counter-increment: h2counter; counter-reset: h3counter; }
+    .blog-content h2::before { content: counter(h2counter) ". "; }
+    .blog-content h3 { counter-increment: h3counter; counter-reset: h4counter; }
+    .blog-content h3::before { content: counter(h2counter) "." counter(h3counter) " "; }
+    .blog-content h4 { counter-increment: h4counter; }
+    .blog-content h4::before { content: counter(h2counter) "." counter(h3counter) "." counter(h4counter) " "; }
+
+    .toc { counter-reset: toc-h1; }
+    .toc-h1 { counter-increment: toc-h1; counter-reset: toc-h2; }
+    .toc-h1 a::before { content: counter(toc-h1) ". "; }
+    .toc-h2 { counter-increment: toc-h2; counter-reset: toc-h3; }
+    .toc-h2 a::before { content: counter(toc-h1) "." counter(toc-h2) " "; }
+    .toc-h3 { counter-increment: toc-h3; }
+    .toc-h3 a::before { content: counter(toc-h1) "." counter(toc-h2) "." counter(toc-h3) " "; }
+</style>
+{% endblock head %}
+
 {% block content %}
 <h1 class="rho">
   {{ page.title }} <span style="font-size: 14px;">{{page.date}}</span>
@@ -29,5 +49,7 @@
     </nav>
 {% endif %}
 
+<div class="blog-content">
 {{ page.content | safe }}
+</div>
 {% endblock content %}
