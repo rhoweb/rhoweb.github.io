@@ -9,6 +9,6 @@ hide_toc = true
 # welcome !
 
 <div class="svg-container">
-<img src="poster.svg" alt="inaugural workshop poster">
+<img src="poster.png" alt="inaugural workshop poster">
 </div>
 
