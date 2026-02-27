@@ -75,6 +75,7 @@ Et voilà! You can now use the vast assortment of tools that IIC-OSIC-TOOLS make
 ## installing OpenROAD
 For this demo, we will be using OpenROAD and exploring the OpenROAD Flow Scripts (ORFS) automated design flow. We clone the ORFS repo and checkout to a stable tested version.
 ```bash
+cd ~/osic/designs
 git clone https://github.com/The-OpenROAD-Project/OpenROAD-flow-scripts.git && cd OpenROAD-flow-scripts
 git checkout $(cat $TOOLS/openroad-latest/ORFS_COMMIT)
 ```
@@ -83,6 +84,15 @@ In order to use OpenROAD with IIC-OSIC-TOOLS, we need to set a few environment v
 export YOSYS_EXE=$TOOLS/yosys/bin/yosys
 export OPENROAD_EXE=$TOOLS/openroad/bin/openroad
 export OPENSTA_EXE=$TOOLS/openroad/bin/opensta
+```
+To quickly check if your installation is working, go back to the git repository and run a smoke test using the default design,cd into the flow directory and run make.
+```bash
+cd ~/osic/designs/OpenROAD-flow-scripts/flow/
+make
+``` 
+To clean up after just run
+```bash
+make clean_all
 ```
 
 and you're good to go (for now ;))
