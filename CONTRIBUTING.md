@@ -36,7 +36,7 @@ the site builds to `public/` and deploys to github pages from the `main` branch.
 │       ├── phi/index.md     # ϕ  physical design
 │       └── psi/index.md     # ψ  emerging silicon tech
 ├── templates/
-│   ├── base.html            # master template (all CSS/JS live here)
+│   ├── base.html            # master template (JS, math, footer)
 │   ├── index.html           # landing page + division navbar
 │   ├── blog.html            # blog listing
 │   ├── blogpost.html        # individual blog post
@@ -48,7 +48,7 @@ the site builds to `public/` and deploys to github pages from the `main` branch.
     ├── favicon.ico
     ├── logo.svg
     ├── rho.svg
-    ├── css/static.css       # placeholder (styles are inline in base.html)
+    ├── css/static.css       # all site CSS
     └── fonts/
         ├── fa-solid-900.woff2
         └── fa-brands-400.woff2
@@ -109,14 +109,28 @@ all templates extend `base.html` using Tera's `{% extends %}` / `{% block %}` sy
 ### base.html
 
 contains everything shared across pages:
-- **all CSS** (inline `<style>` block — there is no external stylesheet)
-- **all JS** (image zoom, code copy button)
+- **JS** (image zoom, code copy button)
 - **math rendering** (KaTeX CSS + MathJax with custom code-block handling)
-- **font-face declarations** (Font Awesome 6 solid + brands, self-hosted woff2)
 - **footer** (rho symbol, email, instagram, discord)
-- **breadcrumb styles** (`.breadcrumb` class used by all child templates)
 
-exposes two blocks: `{% block head %}` for page-specific styles and `{% block content %}` for page body.
+exposes two blocks: `{% block head %}` for page-specific additions and `{% block content %}` for page body.
+
+### static/css/static.css
+
+all site CSS lives here. organized into sections:
+- fonts (Font Awesome 6 face declarations)
+- base (body, `.rho`, `hr`)
+- links
+- breadcrumbs
+- footer & contact
+- images & zoom
+- code blocks & copy button
+- line numbers (giallo)
+- table of contents & counters
+- blog post heading counters
+- landing page layout
+- division navbar, grid, cards, hero
+- responsive (single `@media` block at the bottom)
 
 ### breadcrumbs
 

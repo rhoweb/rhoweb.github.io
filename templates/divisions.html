@@ -1,41 +1,4 @@
 {% extends "base.html" %}
-{% block head %}
-    <style>
-        .divisions-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin: 2em 0;
-        }
-        .division-card {
-            border: 2px solid #e0e0e0;
-            padding: 1.5em;
-            transition: border-color 0.2s;
-        }
-        .division-card:hover {
-            border-color: #4C9D9B;
-        }
-        .division-card a {
-            text-decoration: none;
-        }
-        .division-symbol {
-            font-size: 3em;
-            color: #4C9D9B;
-            line-height: 1;
-        }
-        .division-name {
-            font-size: 1.1em;
-            margin: 0.5em 0 0.3em;
-        }
-        .division-tagline {
-            color: #666;
-            font-size: 0.9em;
-        }
-        @media (max-width: 600px) {
-            .divisions-grid { grid-template-columns: 1fr; }
-        }
-    </style>
-{% endblock head %}
 
 {% block content %}
 <div class="breadcrumb"><a href="/">/</a>divisions</div>
