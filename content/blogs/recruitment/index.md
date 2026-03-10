@@ -5,13 +5,13 @@ date = 2026-03-06
 
 We are recruiting for the rho technical team! We have four divisions:
 
-## Analog and RF Design
+## [Analog and RF Design](/divisions/alpha/) α
 Everything continuous: op-amps, RFICs, PLLs and SPICE simulations. Exploring analog design using open-source tooling such as xschem and ngspice.
-## RTL and Verification
+## [RTL and Verification](/divisions/lambda/) λ
 Exploring architectures, SoCs and other commercial applications using HDL and formally verifying them using frameworks such as UVM to make sure they actually work.
-## Physical Design
+## [Physical Design](/divisions/phi/) ϕ
 RTL-to-GDSII using OpenROAD and associated tools. The bridge between abstract logic and real silicon, taking designs from HDL code to tapeout-ready IC mask layouts.
-## Emerging Silicon Tech 
+## [Emerging Silicon Tech](/divisions/psi/) ψ
 Moonshot ideas. Device Physics, Photonics, Quantum, More-than-moore and everything else at the bleeding edge of silicon design.
 <hr>
 

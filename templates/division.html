@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block head %}
+    <style>
+        .division-header {
+            margin: 2em 0 1em;
+        }
+        .division-hero-symbol {
+            font-size: 5em;
+            color: #4C9D9B;
+            line-height: 1;
+        }
+        .division-hero-name {
+            font-size: 1.4em;
+            margin: 0.3em 0;
+        }
+        .division-hero-tagline {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 1em;
+        }
+    </style>
+{% endblock head %}
+
+{% block content %}
+<div class="breadcrumb"><a href="/">/</a><a href="/divisions">divisions</a>/{{ page.slug }}</div>
+<div class="division-header">
+    <span class="division-hero-symbol">{{ page.extra.symbol }}</span>
+    <div class="division-hero-name">{{ page.title }}</div>
+    <div class="division-hero-tagline">{{ page.extra.tagline }}</div>
+</div>
+<hr>
+{{ page.content | safe }}
+{% endblock content %}

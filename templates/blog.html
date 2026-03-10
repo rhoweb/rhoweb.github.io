@@ -2,6 +2,7 @@
 
 {% block content %}
 
+<div class="breadcrumb"><a href="/">/</a>blogs</div>
 <h1 class="title">{{ section.title }}</h1>
 {% for page in section.pages %}
     <a href="{{ page.permalink | safe }}">{{ page.title }}</a> / {{ page.date }}<br>
