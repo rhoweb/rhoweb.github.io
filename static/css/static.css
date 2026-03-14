@@ -101,6 +101,7 @@ a:hover {
 .footer-rho { color: inherit; transition: color 0.2s; }
 .footer-rho:hover { color: var(--accent); }
 .contact { font-size: 0.85em; margin-top: 1em; letter-spacing: 0; }
+.attribution { font-size: 0.7em; color: var(--text-muted); margin-top: 1.5em; }
 .fa-icon { margin-right: 0.15em; }
 .fa-icon-solid { font-family: 'Font Awesome 6 Free'; font-weight: 900; }
 .fa-icon-brand { font-family: 'Font Awesome 6 Brands'; font-weight: 400; }
