@@ -128,9 +128,25 @@ all site CSS lives here. organized into sections:
 - line numbers (giallo)
 - table of contents & counters
 - blog post heading counters
+- post/event listing (`.post-list`, `.post-item`)
 - landing page layout
 - division navbar, grid, cards, hero
 - responsive (single `@media` block at the bottom)
+
+### post/event listings
+
+blog and event index pages (and the homepage previews) use a shared `.post-list` / `.post-item` pattern:
+
+```html
+<div class="post-list">
+    <a href="..." class="post-item">
+        <span class="post-date">2026-01-20</span>
+        <span class="post-title">post title</span>
+    </a>
+</div>
+```
+
+each item is a ruled row with the date left-aligned and the title to its right. on hover the row highlights with a light teal background and the title turns teal. on mobile the date stacks above the title.
 
 ### breadcrumbs
 
@@ -164,6 +180,7 @@ the entire site uses `'Lucida Console', monospace` at 18px base size.
 single breakpoint at `600px`:
 - division navbar: 4 columns → 2 columns
 - division card grid: 2 columns → 1 column
+- post list items: inline (date + title) → stacked
 - footer contact: inline → stacked
 
 ## javascript features

@@ -51,20 +51,26 @@
 <hr>
 
 <h2 id="events"><a href="{{ get_url(path='@/events/_index.md') }}">/events</a></h2>
-<p>
+<div class="post-list">
     {% set events_section = get_section(path="events/_index.md") %}
-    {% for page in events_section.pages | slice(end=3) %} <a href="{{ page.permalink | safe }}">{{ page.title }}</a> / {{ page.date }}
-    <br>
+    {% for page in events_section.pages | slice(end=3) %}
+    <a href="{{ page.permalink | safe }}" class="post-item">
+        <span class="post-date">{{ page.date }}</span>
+        <span class="post-title">{{ page.title }}</span>
+    </a>
     {% endfor %}
-</p>
+</div>
 <hr>
 
 <h2 id="blogs"><a href="{{ get_url(path='@/blogs/_index.md') }}">/blogs</a></h2>
-<p>
+<div class="post-list">
     {% set blog_section = get_section(path="blogs/_index.md") %}
-    {% for page in blog_section.pages | slice(end=3) %} <a href="{{ page.permalink | safe }}">{{ page.title }}</a> / {{ page.date }}
-    <br>
+    {% for page in blog_section.pages | slice(end=3) %}
+    <a href="{{ page.permalink | safe }}" class="post-item">
+        <span class="post-date">{{ page.date }}</span>
+        <span class="post-title">{{ page.title }}</span>
+    </a>
     {% endfor %}
-</p>
+</div>
 
 {% endblock content %}

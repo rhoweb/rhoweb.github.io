@@ -177,6 +177,41 @@ pre:hover .copy-btn { opacity: 1; }
 .division-name { font-size: 1.1em; margin: 0.5em 0 0.3em; }
 .division-tagline { color: #666; font-size: 0.9em; }
 
+/* post/event listing */
+.post-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 1.5em 0;
+    border-top: 1px solid #e0e0e0;
+}
+.post-item {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5em;
+    padding: 0.8em 0.6em;
+    text-decoration: none;
+    border-bottom: 1px solid #e0e0e0;
+    transition: background-color 0.15s, border-color 0.15s;
+}
+.post-item:hover {
+    background-color: #f0fafa;
+    border-bottom-color: #4C9D9B;
+}
+.post-date {
+    color: #888;
+    font-size: 0.85em;
+    white-space: nowrap;
+    min-width: 10ch;
+}
+.post-title {
+    color: #111;
+    transition: color 0.15s;
+}
+.post-item:hover .post-title {
+    color: #4C9D9B;
+}
+
 /* individual division page */
 .division-header { margin: 2em 0 1em; }
 .division-hero-symbol { font-size: 5em; color: #4C9D9B; line-height: 1; }
@@ -191,4 +226,6 @@ pre:hover .copy-btn { opacity: 1; }
     .div-nav-item:nth-child(2) { border-right: none; }
     .div-nav-item:nth-child(1), .div-nav-item:nth-child(2) { border-bottom: 1px solid #4C9D9B; }
     .divisions-grid { grid-template-columns: 1fr; }
+    .post-item { flex-direction: column; gap: 0.3em; }
+    .post-date { min-width: unset; }
 }

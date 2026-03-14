@@ -4,7 +4,12 @@
 
 <div class="breadcrumb"><a href="/">/</a>blogs</div>
 <h1 class="title">{{ section.title }}</h1>
+<div class="post-list">
 {% for page in section.pages %}
-    <a href="{{ page.permalink | safe }}">{{ page.title }}</a> / {{ page.date }}<br>
+    <a href="{{ page.permalink | safe }}" class="post-item">
+        <span class="post-date">{{ page.date }}</span>
+        <span class="post-title">{{ page.title }}</span>
+    </a>
 {% endfor %}
+</div>
 {% endblock content %}
