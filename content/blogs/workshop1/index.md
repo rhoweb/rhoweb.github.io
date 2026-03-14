@@ -6,7 +6,7 @@ date = 2026-01-24
 ## what to bring
 Please bring a laptop with:
 - 4GB of RAM (16 recommended)
-- 10GB of free disk space prior to installation (15 recommended)
+- 15GB of free disk space prior to installation (20 recommended)
 - the following installation of IIC-OSIC-TOOLS docker image and repository with configuration relevant to your OS.
 
 Please note that at the event network speeds are not guaranteed to be good so it is strongly recommended to come with everything locally installed. If you have any problems with configuration please reach out to [kontaktrho@gmail.com](kontaktrho@gmail.com) or send a message in our [discord server](https://discord.gg/kDBPrpqW). 
@@ -85,7 +85,7 @@ export YOSYS_EXE=$TOOLS/yosys/bin/yosys
 export OPENROAD_EXE=$TOOLS/openroad/bin/openroad
 export OPENSTA_EXE=$TOOLS/openroad/bin/opensta
 ```
-To quickly check if your installation is working, go back to the git repository and run a smoke test using the default design,cd into the flow directory and run make.
+To quickly check if your installation is working, go back to the git repository and run a smoke test using the default design, cd into the flow directory and run make.
 ```bash
 cd ~/osic/designs/OpenROAD-flow-scripts/flow/
 make
