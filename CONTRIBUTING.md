@@ -102,6 +102,19 @@ description = "longer description"    # metadata
 
 if you add a new division, you also need to add it to the navbar grid in `templates/index.html`.
 
+### adding a person
+
+all team members are defined in `content/people/_index.md` as TOML front matter. to add someone:
+
+1. drop their photo in `content/people/photos/<firstname>.png`
+2. add an entry to the appropriate `[[extra.groups]]` in `content/people/_index.md`:
+
+```toml
+{ name = "Full Name", photo = "firstname.png", role = "role title", chip_team = true }
+```
+
+set `chip_team = true` for chip design team members (shown with a teal border). to add a new group, append another `[[extra.groups]]` block.
+
 ## templates
 
 all templates extend `base.html` using Tera's `{% extends %}` / `{% block %}` system.
