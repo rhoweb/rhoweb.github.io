@@ -264,12 +264,18 @@ pre:hover .copy-btn { opacity: 1; }
 
 /* responsive */
 @media (max-width: 600px) {
+    body { font-size: 16px; padding: 0 20px; }
+    .footer { font-size: 0.8em; }
     .contact { display: flex; flex-direction: column; align-items: center; gap: 0.5em; }
     .contact .sep { display: none; }
     .divisions-nav { grid-template-columns: repeat(2, 1fr); }
     .div-nav-item:nth-child(2) { border-right: none; }
     .div-nav-item:nth-child(1), .div-nav-item:nth-child(2) { border-bottom: 1px solid var(--accent); }
+    .div-nav-name { font-size: 1em; }
     .divisions-grid { grid-template-columns: 1fr; }
+    .division-tagline { font-size: 1em; }
     .post-item { flex-direction: column; gap: 0.3em; }
-    .post-date { min-width: unset; }
+    .post-date { min-width: unset; font-size: 1em; }
+    .post-title { font-size: 1em; }
+    img { max-width: 100%; }
 }
