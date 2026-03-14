@@ -77,6 +77,10 @@
         {% block head %}{% endblock head %}
 </head>
 <body>
+  <script>if(localStorage.getItem('theme')==='dark')document.documentElement.setAttribute('data-theme','dark')</script>
+  <button class="theme-toggle" onclick="let d=document.documentElement,t=d.getAttribute('data-theme')==='dark'?'':'dark';d.setAttribute('data-theme',t);localStorage.setItem('theme',t||'light');this.textContent=t?'light':'dark'">
+    <script>document.write(localStorage.getItem('theme')==='dark'?'light':'dark')</script>
+  </button>
   {% block content %}{% endblock content %}
   <div class="footer">
     <a href="/" class="footer-rho">return to rho</a>
