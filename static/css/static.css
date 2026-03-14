@@ -52,12 +52,10 @@ a:hover {
 
 /* footer */
 .footer { text-align: center; display: block; margin-top: 60px; margin-bottom: 60px; }
-.footer a { text-decoration: none; }
-.footer-rho { color: grey; transition: color 0.2s; }
+.footer-rho { color: inherit; transition: color 0.2s; }
 .footer-rho:hover { color: #4C9D9B; }
-.footer-rho svg { width: 40px; height: auto; vertical-align: middle; }
-.contact { font-size: 0.85em; margin-top: 1em; }
-.fa-icon { margin-right: 0.3em; }
+.contact { font-size: 0.85em; margin-top: 1em; letter-spacing: 0; }
+.fa-icon { margin-right: 0.15em; }
 .fa-icon-solid { font-family: 'Font Awesome 6 Free'; font-weight: 900; }
 .fa-icon-brand { font-family: 'Font Awesome 6 Brands'; font-weight: 400; }
 
