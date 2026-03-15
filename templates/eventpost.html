@@ -1,5 +1,14 @@
 {% extends "base.html" %}
 
+{% block meta %}
+<title>{{ page.title }} — rho</title>
+<meta name="description" content="{{ page.summary | default(value='democratizing hardware design @ Ramaiah Institute of Technology, Bengaluru') | striptags | truncate(length=160) }}">
+<meta property="og:title" content="{{ page.title }} — rho">
+<meta property="og:description" content="{{ page.summary | default(value='democratizing hardware design @ Ramaiah Institute of Technology, Bengaluru') | striptags | truncate(length=160) }}">
+<meta property="og:type" content="article">
+<meta property="og:url" content="{{ page.permalink | safe }}">
+{% endblock meta %}
+
 {% block content %}
 <div class="breadcrumb"><a href="/">/</a><a href="/events">events</a>/{{ page.slug }}</div>
 <h1 class="rho">
