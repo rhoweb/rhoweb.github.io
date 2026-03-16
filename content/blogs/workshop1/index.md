@@ -90,6 +90,8 @@ To quickly check if your installation is working, go back to the git repository 
 cd ~/osic/designs/OpenROAD-flow-scripts/flow/
 make
 ``` 
+You should see something like this to know you're done.
+![alt text](image-4.png)
 To clean up after just run
 ```bash
 make clean_all
