@@ -17,6 +17,6 @@ Moonshot ideas. Device Physics, Photonics, Quantum, More-than-moore and everythi
 
 03/06/26: We are currently recruiting **divisional heads**, we will be recruiting general members for the divisions in the coming week. This position is only available for third years.
 15/06/26: We are currently recruiting **core members**. This position is available for both second and third years.
-Apply [here](https://forms.gle/uVNBYfwbKphzMjUz7) by **Wednesday, 18th March, 6PM**.
+Apply [here](https://forms.gle/) by **Wednesday, 18th March, 6PM**.
 
 After this initial screening, we will be conducting personal interviews. The specifics will be intimated by Wednesday, 11th March.

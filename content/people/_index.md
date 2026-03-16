@@ -26,8 +26,7 @@ members = [
 name = "λ — rtl & verification"
 photo_dir = "/photos/lambda"
 members = [
-    { name = "Arya Saha", photo = "arya.png", role = "division lead", chip_team = true },
-    { name = "Ishita Shivhare", photo = "ishita.png", role = "core member", chip_team = true, linkedin = "ishita-shivhare-a9279228a", instagram = "_.ishitaaa.___", github = "Ishitashivhare"},
+    { name = "Ishita Shivhare", photo = "ishita.png", role = "division lead", chip_team = true, linkedin = "ishita-shivhare-a9279228a", instagram = "_.ishitaaa.___", github = "Ishitashivhare"},
 ]
 
 [[extra.groups]]
