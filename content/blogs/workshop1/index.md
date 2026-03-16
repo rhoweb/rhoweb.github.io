@@ -77,7 +77,7 @@ For this demo, we will be using OpenROAD and exploring the OpenROAD Flow Scripts
 ```bash
 cd ~/osic/designs
 git clone https://github.com/The-OpenROAD-Project/OpenROAD-flow-scripts.git && cd OpenROAD-flow-scripts
-git checkout $(cat $TOOLS/openroad-latest/ORFS_COMMIT)
+git checkout $(cat $TOOLS/openroad/ORFS_COMMIT)
 ```
 In order to use OpenROAD with IIC-OSIC-TOOLS, we need to set a few environment variables **in the container** (not your system terminal). After starting the container (preferably in X11 mode, from now on) add this to the **.bashrc** config file (found at $HOME/.bashrc):
 ```bash
