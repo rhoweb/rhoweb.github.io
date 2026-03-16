@@ -294,6 +294,9 @@ pre:hover .copy-btn { opacity: 1; }
 }
 .person-name { margin-top: 0.6em; font-size: 0.9em; }
 .person-role { color: var(--text-muted); font-size: 0.75em; }
+.person-links { margin-top: 0.3em; font-size: 0.75em; display: flex; justify-content: center; gap: 0.5em; }
+.person-links a { color: var(--text-muted); text-decoration: none; }
+.person-links a:hover { color: var(--accent); }
 
 /* individual division page */
 .division-header { margin: 2em 0 1em; }

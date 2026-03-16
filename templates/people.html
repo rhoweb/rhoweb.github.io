@@ -10,9 +10,14 @@
 <div class="people-grid">
     {% for member in group.members %}
     <div class="person-card">
-        <div class="person-img{% if member.chip_team %} chip-team{% endif %}"><img src="photos/{{ member.photo }}" alt="{{ member.name }}"></div>
+        <div class="person-img{% if member.chip_team %} chip-team{% endif %}"><img src="{{ group.photo_dir }}/{{ member.photo }}" alt="{{ member.name }}"></div>
         <div class="person-name">{{ member.name }}</div>
         <div class="person-role">{{ member.role }}</div>
+        <div class="person-links">
+            {% if member.linkedin %}<a href="https://linkedin.com/in/{{ member.linkedin }}" title="LinkedIn"><span class="fa-icon fa-icon-brand">&#xf08c;</span></a>{% endif %}
+            {% if member.instagram %}<a href="https://instagram.com/{{ member.instagram }}" title="Instagram"><span class="fa-icon fa-icon-brand">&#xf16d;</span></a>{% endif %}
+            {% if member.github %}<a href="https://github.com/{{ member.github }}" title="GitHub"><span class="fa-icon fa-icon-brand">&#xf09b;</span></a>{% endif %}
+        </div>
     </div>
     {% endfor %}
 </div>
