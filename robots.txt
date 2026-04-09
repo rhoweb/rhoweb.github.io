@@ -1,0 +1,5 @@
+# rest here, weary traveller #
+User-agent: *
+Disallow:
+Allow: /
+Sitemap: https://rhoweb.github.io/sitemap.xml

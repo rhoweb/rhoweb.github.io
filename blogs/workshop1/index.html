@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+<title>inaugural workshop prerequisites — rho</title>
+<meta name="description" content="democratizing hardware design @ Ramaiah Institute of Technology, Bengaluru">
+<meta property="og:title" content="inaugural workshop prerequisites — rho">
+<meta property="og:description" content="democratizing hardware design @ Ramaiah Institute of Technology, Bengaluru">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://rhoweb.github.io/blogs/workshop1/">
+
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/static.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css" integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
+    <!-- JS for MathJax -->
+    <script>
+        window.MathJax = {
+            tex: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ]
+            },
+            startup: {
+            ready: () => {
+                    // Function to iterate over all pre and code elements
+                    // if they contain TeX/LaTeX code for maths as defined
+                    // by the markers in tex settings above then copy their
+                    // textContent before them and remove the element from
+                    // the DOM. 
+                    
+                    // get pre and code elements
+                    var prelist = document.getElementsByTagName("pre");
+                    var codelist = document.getElementsByTagName("code");
+                    // get delimiters for inline and display math
+                    var inline = MathJax.config.tex.inlineMath;
+                    var display = MathJax.config.tex.displayMath;
+                    // start building  a RegExp for each of these math types
+                    var inlineRegexList = [];
+                    var displayRegexList =[];
+                    for(i=0;i<inline.length;i++) {
+                        // https://stackoverflow.com/questions/3446170/escape-string-for-use-in-javascript-regex
+                        delimLEsc = inline[i][0].replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+                        //alert(delimLEsc);
+                        delimREsc = inline[i][1].replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+                        inlineRegexList.push("("+delimLEsc+")((.|[\\r\\n\\t])*?)("+delimREsc+")");
+                    };
+                    for(i=0;i<display.length;i++) {
+                        // https://stackoverflow.com/questions/3446170/escape-string-for-use-in-javascript-regex
+                        delimLEsc = display[i][0].replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+                        //alert(delimLEsc);
+                        delimREsc = display[i][1].replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+                        displayRegexList.push("("+delimLEsc+")((.|[\\r\\n\\t])*?)("+delimREsc+")");
+                    };
+                    inlineRegExp = new RegExp(inlineRegexList.join("|"));
+                    displayRegExp = new RegExp(displayRegexList.join("|"));
+                    
+                    // iterate over pre elements applying RegExp
+                    // iterate "backwards" as we are removing elements!
+                    for (i=prelist.length; i>0; i--) {
+                        if(displayRegExp.test(prelist[i-1].textContent)) {
+                            var t = document.createTextNode(prelist[i-1].textContent);
+                            prelist[i-1].parentNode.insertBefore(t,prelist[i-1]);
+                            prelist[i-1].parentNode.removeChild(prelist[i-1]);
+                        }
+                    }
+                    // iterate over code elements applying RegExp
+                    // iterate "backwards" as we are removing elements!
+                    for (i=codelist.length; i>0; i--) {
+                        if(inlineRegExp.test(codelist[i-1].textContent)) {
+                            var t = document.createTextNode(codelist[i-1].textContent);
+                            codelist[i-1].parentNode.insertBefore(t,codelist[i-1]);
+                            codelist[i-1].parentNode.removeChild(codelist[i-1]);
+                        }
+                    }
+                // Now process the page in MathJax
+                MathJax.startup.defaultReady();
+            }
+            }
+        };
+        </script>
+        <script type="text/javascript" id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+        </script>
+        
+</head>
+<body>
+  <script>if(localStorage.getItem('theme')==='dark')document.documentElement.setAttribute('data-theme','dark')</script>
+  <button class="theme-toggle" onclick="let d=document.documentElement,t=d.getAttribute('data-theme')==='dark'?'':'dark';d.setAttribute('data-theme',t);localStorage.setItem('theme',t||'light');this.textContent=t?'light':'dark'">
+    <script>document.write(localStorage.getItem('theme')==='dark'?'light':'dark')</script>
+  </button>
+  
+<div class="breadcrumb"><a href="/">/</a><a href="/blogs">blogs</a>/workshop1</div>
+<h1 class="rho">
+  inaugural workshop prerequisites <span style="font-size: 14px;">2026-01-24</span>
+</h1>
+
+
+    <nav class="toc">
+    
+        <div class="toc-h1">
+            <a href="https://rhoweb.github.io/blogs/workshop1/#what-to-bring">what to bring</a>
+        </div>
+        
+    
+        <div class="toc-h1">
+            <a href="https://rhoweb.github.io/blogs/workshop1/#initial-setup">initial setup</a>
+        </div>
+        
+            
+                <div class="toc-h2">
+                    <a href="https://rhoweb.github.io/blogs/workshop1/#installing-docker">installing Docker</a>
+                </div>
+                
+            
+                <div class="toc-h2">
+                    <a href="https://rhoweb.github.io/blogs/workshop1/#configuring-the-startup-scripts">configuring the startup scripts</a>
+                </div>
+                
+            
+                <div class="toc-h2">
+                    <a href="https://rhoweb.github.io/blogs/workshop1/#macos-only-x11-port-forwarding-with-xquartz">macOS only: X11 port forwarding with XQuartz</a>
+                </div>
+                
+            
+                <div class="toc-h2">
+                    <a href="https://rhoweb.github.io/blogs/workshop1/#running-the-container">running the container</a>
+                </div>
+                
+            
+        
+    
+        <div class="toc-h1">
+            <a href="https://rhoweb.github.io/blogs/workshop1/#installing-openroad">installing OpenROAD</a>
+        </div>
+        
+    
+    </nav>
+
+
+<div class="blog-content">
+<h2 id="what-to-bring"><a class="zola-anchor" href="#what-to-bring" aria-label="Anchor link for: what-to-bring">what to bring</a></h2>
+<p>Please bring a laptop with:</p>
+<ul>
+<li>4GB of RAM (16 recommended)</li>
+<li>15GB of free disk space prior to installation (20 recommended)</li>
+<li>the following installation of IIC-OSIC-TOOLS docker image and repository with configuration relevant to your OS.</li>
+</ul>
+<p>Please note that at the event network speeds are not guaranteed to be good so it is strongly recommended to come with everything locally installed. If you have any problems with configuration please reach out to <a href="https://rhoweb.github.io/blogs/workshop1/kontaktrho@gmail.com">kontaktrho@gmail.com</a> or send a message in our <a rel="external" href="https://discord.gg/kDBPrpqW">discord server</a>.</p>
+<h2 id="initial-setup"><a class="zola-anchor" href="#initial-setup" aria-label="Anchor link for: initial-setup">initial setup</a></h2>
+<p>(click to enlarge images)</p>
+<p>Create a project directory to contain all the relevant respositories and project sub-directories.</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #268BD2;">mkdir</span><span style="color: #2AA198;"> ~/osic</span><span> &amp;&amp;</span><span style="color: #268BD2;"> cd</span><span style="color: #2AA198;"> ~/osic</span></span></code></pre>
+<p>Now, clone the <a rel="external" href="https://github.com/iic-jku/IIC-OSIC-TOOLS">github repository</a> required for the IIC-OSIC-TOOLS docker image.</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #268BD2;">git</span><span style="color: #2AA198;"> clone</span><span style="color: #CB4B16;"> --depth=1</span><span style="color: #2AA198;"> https://github.com/iic-jku/iic-osic-tools.git</span></span></code></pre><h3 id="installing-docker"><a class="zola-anchor" href="#installing-docker" aria-label="Anchor link for: installing-docker">installing Docker</a></h3>
+<ul>
+<li><strong>macOS</strong>: Install Docker Desktop for your architecture (Intel / Silicon) from their <a rel="external" href="https://www.docker.com/products/docker-desktop/">webpage</a> and configure your account.
+<img src="https://rhoweb.github.io/blogs/workshop1/image.png" alt="alt text" /></li>
+<li><strong>Linux</strong>: Install Docker Engine using the <a rel="external" href="https://docs.docker.com/engine/install/">official documentation</a> for your distribution. Make sure your user is in the <code>docker</code> group so you can run containers without <code>sudo</code>:</li>
+</ul>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #268BD2;">sudo</span><span style="color: #2AA198;"> usermod</span><span style="color: #CB4B16;"> -aG</span><span style="color: #2AA198;"> docker</span><span style="color: #268BD2;"> $USER</span></span></code></pre>
+<p>Log out and back in for the group change to take effect. (Untested on Wayland, but should probably work.)</p>
+<ul>
+<li><strong>Windows</strong>: I would strongly suggest against using Windows due to the sheer amount of config and potential troubleshooting required. But if you're up for it, you can refer to this <a rel="external" href="https://kwantaekim.github.io/2024/05/25/OSE-Docker/#in--windows">installation guide</a> which provides detailed steps for configuring WSL2, MobaXTerm, and other tools required to perform the installation.</li>
+</ul>
+<h3 id="configuring-the-startup-scripts"><a class="zola-anchor" href="#configuring-the-startup-scripts" aria-label="Anchor link for: configuring-the-startup-scripts">configuring the startup scripts</a></h3>
+<p>We need to tell the startup scripts where our design files will live. Open each of the three scripts (<strong>start_x.sh</strong>, <strong>start_vnc.sh</strong>, <strong>start_shell.sh</strong>) in the cloned repo and find this line:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #268BD2;">DESIGNS</span><span style="color: #859900;">=</span><span style="color: #268BD2;">$HOME</span><span style="color: #2AA198;">/eda/designs</span></span></code></pre>
+<p>Replace it with:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #268BD2;">DESIGNS</span><span style="color: #859900;">=</span><span style="color: #268BD2;">$HOME</span><span style="color: #2AA198;">/osic/designs</span></span></code></pre>
+<p>There are three modes of running the docker image, conveniently wrapped in scripts for us:</p>
+<ol>
+<li><strong>start_vnc.sh</strong> is for the VNC mode of operation, which provides an XFCE desktop environment in the noVNC server integrated in your browser (not preferred, very clunky)</li>
+<li><strong>start_shell.sh</strong> is for full root access without a graphical interface. This mode unfortunately cannot run GUI applications such as OpenROAD and KLayout, for instance.</li>
+<li><strong>start_x.sh (recommended)</strong> is for the X11 mode of operation, which runs on the local X11 server, enabling you to run GUI applications. <strong>This is the mode we will be using for the workshop.</strong></li>
+</ol>
+<h3 id="macos-only-x11-port-forwarding-with-xquartz"><a class="zola-anchor" href="#macos-only-x11-port-forwarding-with-xquartz" aria-label="Anchor link for: macos-only-x11-port-forwarding-with-xquartz">macOS only: X11 port forwarding with XQuartz</a></h3>
+<p>On macOS, X11 is not available natively so we need <strong>XQuartz</strong>. Linux users can skip ahead to <a href="https://rhoweb.github.io/blogs/workshop1/#running-the-container">running the container</a>.</p>
+<p>After installing XQuartz from the <a rel="external" href="https://www.xquartz.org/">website</a> / homebrew formula, open the app and navigate to <strong>Settings window (Cmd + ,) &gt; Security</strong> and enable the <strong>"Allow connections from network clients"</strong> setting.</p>
+<p><img src="https://rhoweb.github.io/blogs/workshop1/image-1.png" alt="alt text" />
+Then, enter the following command in the XQuartz terminal to allow network connections:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #268BD2;">xhost</span><span style="color: #2AA198;"> +</span><span style="color: #D33682;"> 127.0.0.1</span></span></code></pre>
+<p>Note that it is normal for the XQuartz terminal to look slightly broken if you are using custom themes (Oh-My-Zsh, etc.). You can close the XQuartz application, the relevant script will launch it automatically.</p>
+<h3 id="running-the-container"><a class="zola-anchor" href="#running-the-container" aria-label="Anchor link for: running-the-container">running the container</a></h3>
+<p>Execute:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #268BD2;">./start_x.sh</span></span></code></pre>
+<p>Upon first execution, the script pulls the docker image located at hpretl/iic-osic-tools. <strong>Please wait as this can take a while</strong> (10-20 minutes, depending on your internet connection and luck), and once done it creates the container if it doesn't exist.
+<img src="https://rhoweb.github.io/blogs/workshop1/image-3.png" alt="alt text" />
+In regular usage, it prompts you asking you if you want to start/remove it, and choose to start it. Note that removing the container deletes any configuration you may have done on it due to its ephemerality, so <strong>refrain</strong> from removing it unless you know what you are doing.
+<img src="https://rhoweb.github.io/blogs/workshop1/image-2.png" alt="alt text" /></p>
+<p>Et voilà! You can now use the vast assortment of tools that IIC-OSIC-TOOLS makes available, such as OpenROAD, Librelane, KLayout, Magic, among others.</p>
+<h2 id="installing-openroad"><a class="zola-anchor" href="#installing-openroad" aria-label="Anchor link for: installing-openroad">installing OpenROAD</a></h2>
+<p>For this demo, we will be using OpenROAD and exploring the OpenROAD Flow Scripts (ORFS) automated design flow. We clone the ORFS repo and checkout to a stable tested version.</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #268BD2;">cd</span><span style="color: #2AA198;"> ~/osic/designs</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">git</span><span style="color: #2AA198;"> clone https://github.com/The-OpenROAD-Project/OpenROAD-flow-scripts.git</span><span> &amp;&amp;</span><span style="color: #268BD2;"> cd</span><span style="color: #2AA198;"> OpenROAD-flow-scripts</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">git</span><span style="color: #2AA198;"> checkout</span><span> $(</span><span style="color: #268BD2;">cat $TOOLS</span><span style="color: #2AA198;">/openroad/ORFS_COMMIT</span><span>)</span></span></code></pre>
+<p>In order to use OpenROAD with IIC-OSIC-TOOLS, we need to set a few environment variables <strong>in the container</strong> (not your system terminal). After starting the container (preferably in X11 mode, from now on) add this to the <strong>.bashrc</strong> config file (found at $HOME/.bashrc):</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #586E75;font-weight: bold;">export</span><span style="color: #268BD2;"> YOSYS_EXE</span><span style="color: #859900;">=</span><span style="color: #268BD2;">$TOOLS</span><span>/</span><span style="color: #268BD2;">yosys</span><span>/</span><span style="color: #268BD2;">bin</span><span>/</span><span style="color: #268BD2;">yosys</span></span>
+<span class="giallo-l"><span style="color: #586E75;font-weight: bold;">export</span><span style="color: #268BD2;"> OPENROAD_EXE</span><span style="color: #859900;">=</span><span style="color: #268BD2;">$TOOLS</span><span>/</span><span style="color: #268BD2;">openroad</span><span>/</span><span style="color: #268BD2;">bin</span><span>/</span><span style="color: #268BD2;">openroad</span></span>
+<span class="giallo-l"><span style="color: #586E75;font-weight: bold;">export</span><span style="color: #268BD2;"> OPENSTA_EXE</span><span style="color: #859900;">=</span><span style="color: #268BD2;">$TOOLS</span><span>/</span><span style="color: #268BD2;">openroad</span><span>/</span><span style="color: #268BD2;">bin</span><span>/</span><span style="color: #268BD2;">opensta</span></span></code></pre>
+<p>To quickly check if your installation is working, go back to the git repository and run a smoke test using the default design, cd into the flow directory and run make.</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #268BD2;">cd</span><span style="color: #2AA198;"> ~/osic/designs/OpenROAD-flow-scripts/flow/</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">make</span></span></code></pre>
+<p>You should see something like this to know you're done.
+<img src="https://rhoweb.github.io/blogs/workshop1/image-4.png" alt="alt text" />
+To clean up after just run</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #268BD2;">make</span><span style="color: #2AA198;"> clean_all</span></span></code></pre>
+<p>and you're good to go (for now ;))</p>
+
+</div>
+
+  <div class="footer">
+    <a href="/" class="footer-rho">return to rho</a>
+    <p class="contact">
+    <a href="mailto:kontaktrho@gmail.com"><span class="fa-icon fa-icon-solid">&#xf0e0;</span> kontaktrho@gmail.com</a><span class="sep"> · </span><a href="https://instagram.com/webrho"><span class="fa-icon fa-icon-brand">&#xf16d;</span> @webrho</a><span class="sep"> · </span><a href="https://www.linkedin.com/company/rhoweb/"><span class="fa-icon fa-icon-brand">&#xf0e1;</span> linkedin</a><span class="sep"> · </span> <a href="https://github.com/rhoweb/"><span class="fa-icon fa-icon-brand">&#xf09b</span> github</a>
+    </p>
+    <p class="attribution">© 2026 mohit lingarkar</p>
+  </div>
+  <script>document.addEventListener('click',e=>{if(e.target.tagName==='IMG'&&!e.target.closest('.svg-container'))e.target.classList.toggle('zoomed')})</script>
+  <script>
+    document.querySelectorAll('pre').forEach(pre => {
+      const btn = document.createElement('button');
+      btn.className = 'copy-btn';
+      btn.textContent = 'copy';
+      btn.addEventListener('click', () => {
+        const code = pre.querySelector('code');
+        navigator.clipboard.writeText((code || pre).textContent).then(() => {
+          btn.textContent = 'copied!';
+          setTimeout(() => btn.textContent = 'copy', 1500);
+        });
+      });
+      pre.appendChild(btn);
+    });
+  </script>
+</body>
+</html>

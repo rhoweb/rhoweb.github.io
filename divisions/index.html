@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>rho</title>
+    <meta name="description" content="democratizing hardware design @ Ramaiah Institute of Technology, Bengaluru">
+    <meta property="og:title" content="rho — ramaiah hardware org">
+    <meta property="og:description" content="democratizing hardware design @ Ramaiah Institute of Technology, Bengaluru">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rhoweb.github.io">
+    
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/static.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css" integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
+    <!-- JS for MathJax -->
+    <script>
+        window.MathJax = {
+            tex: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ]
+            },
+            startup: {
+            ready: () => {
+                    // Function to iterate over all pre and code elements
+                    // if they contain TeX/LaTeX code for maths as defined
+                    // by the markers in tex settings above then copy their
+                    // textContent before them and remove the element from
+                    // the DOM. 
+                    
+                    // get pre and code elements
+                    var prelist = document.getElementsByTagName("pre");
+                    var codelist = document.getElementsByTagName("code");
+                    // get delimiters for inline and display math
+                    var inline = MathJax.config.tex.inlineMath;
+                    var display = MathJax.config.tex.displayMath;
+                    // start building  a RegExp for each of these math types
+                    var inlineRegexList = [];
+                    var displayRegexList =[];
+                    for(i=0;i<inline.length;i++) {
+                        // https://stackoverflow.com/questions/3446170/escape-string-for-use-in-javascript-regex
+                        delimLEsc = inline[i][0].replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+                        //alert(delimLEsc);
+                        delimREsc = inline[i][1].replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+                        inlineRegexList.push("("+delimLEsc+")((.|[\\r\\n\\t])*?)("+delimREsc+")");
+                    };
+                    for(i=0;i<display.length;i++) {
+                        // https://stackoverflow.com/questions/3446170/escape-string-for-use-in-javascript-regex
+                        delimLEsc = display[i][0].replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+                        //alert(delimLEsc);
+                        delimREsc = display[i][1].replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+                        displayRegexList.push("("+delimLEsc+")((.|[\\r\\n\\t])*?)("+delimREsc+")");
+                    };
+                    inlineRegExp = new RegExp(inlineRegexList.join("|"));
+                    displayRegExp = new RegExp(displayRegexList.join("|"));
+                    
+                    // iterate over pre elements applying RegExp
+                    // iterate "backwards" as we are removing elements!
+                    for (i=prelist.length; i>0; i--) {
+                        if(displayRegExp.test(prelist[i-1].textContent)) {
+                            var t = document.createTextNode(prelist[i-1].textContent);
+                            prelist[i-1].parentNode.insertBefore(t,prelist[i-1]);
+                            prelist[i-1].parentNode.removeChild(prelist[i-1]);
+                        }
+                    }
+                    // iterate over code elements applying RegExp
+                    // iterate "backwards" as we are removing elements!
+                    for (i=codelist.length; i>0; i--) {
+                        if(inlineRegExp.test(codelist[i-1].textContent)) {
+                            var t = document.createTextNode(codelist[i-1].textContent);
+                            codelist[i-1].parentNode.insertBefore(t,codelist[i-1]);
+                            codelist[i-1].parentNode.removeChild(codelist[i-1]);
+                        }
+                    }
+                // Now process the page in MathJax
+                MathJax.startup.defaultReady();
+            }
+            }
+        };
+        </script>
+        <script type="text/javascript" id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+        </script>
+        
+</head>
+<body>
+  <script>if(localStorage.getItem('theme')==='dark')document.documentElement.setAttribute('data-theme','dark')</script>
+  <button class="theme-toggle" onclick="let d=document.documentElement,t=d.getAttribute('data-theme')==='dark'?'':'dark';d.setAttribute('data-theme',t);localStorage.setItem('theme',t||'light');this.textContent=t?'light':'dark'">
+    <script>document.write(localStorage.getItem('theme')==='dark'?'light':'dark')</script>
+  </button>
+  
+<div class="breadcrumb"><a href="/">/</a>divisions</div>
+<h2>divisions</h2>
+<p>the world of silicon is vast and deeply interconnected. we're narrowing it down to four key divisions.</p>
+
+<div class="divisions-grid">
+    
+    
+    <div class="division-card">
+        <a href="https://rhoweb.github.io/divisions/alpha/">
+            <span class="division-symbol">α</span>
+            <div class="division-name">analog and rf design</div>
+            <div class="division-tagline">everything continuous</div>
+        </a>
+    </div>
+    
+    <div class="division-card">
+        <a href="https://rhoweb.github.io/divisions/psi/">
+            <span class="division-symbol">ψ</span>
+            <div class="division-name">emerging silicon tech</div>
+            <div class="division-tagline">moonshot ideas</div>
+        </a>
+    </div>
+    
+    <div class="division-card">
+        <a href="https://rhoweb.github.io/divisions/phi/">
+            <span class="division-symbol">ϕ</span>
+            <div class="division-name">physical design</div>
+            <div class="division-tagline">RTL to GDSII</div>
+        </a>
+    </div>
+    
+    <div class="division-card">
+        <a href="https://rhoweb.github.io/divisions/lambda/">
+            <span class="division-symbol">λ</span>
+            <div class="division-name">rtl and verification</div>
+            <div class="division-tagline">architectures and logic</div>
+        </a>
+    </div>
+    
+</div>
+
+  <div class="footer">
+    <a href="/" class="footer-rho">return to rho</a>
+    <p class="contact">
+    <a href="mailto:kontaktrho@gmail.com"><span class="fa-icon fa-icon-solid">&#xf0e0;</span> kontaktrho@gmail.com</a><span class="sep"> · </span><a href="https://instagram.com/webrho"><span class="fa-icon fa-icon-brand">&#xf16d;</span> @webrho</a><span class="sep"> · </span><a href="https://www.linkedin.com/company/rhoweb/"><span class="fa-icon fa-icon-brand">&#xf0e1;</span> linkedin</a><span class="sep"> · </span> <a href="https://github.com/rhoweb/"><span class="fa-icon fa-icon-brand">&#xf09b</span> github</a>
+    </p>
+    <p class="attribution">© 2026 mohit lingarkar</p>
+  </div>
+  <script>document.addEventListener('click',e=>{if(e.target.tagName==='IMG'&&!e.target.closest('.svg-container'))e.target.classList.toggle('zoomed')})</script>
+  <script>
+    document.querySelectorAll('pre').forEach(pre => {
+      const btn = document.createElement('button');
+      btn.className = 'copy-btn';
+      btn.textContent = 'copy';
+      btn.addEventListener('click', () => {
+        const code = pre.querySelector('code');
+        navigator.clipboard.writeText((code || pre).textContent).then(() => {
+          btn.textContent = 'copied!';
+          setTimeout(() => btn.textContent = 'copy', 1500);
+        });
+      });
+      pre.appendChild(btn);
+    });
+  </script>
+</body>
+</html>
