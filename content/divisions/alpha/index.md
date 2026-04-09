@@ -10,11 +10,10 @@ description = "op-amps, PLLs, RFICs, and SPICE simulations. if it's analog, it's
 
 everything continuous: op-amps, PLLs, RFICs, and SPICE simulations.
 
-the alpha division explores the world of continuous-time signal processing and analog circuit design using free and open source tools. from basic amplifier topologies to advanced RF front-ends, we work on designing, simulating, and understanding the circuits that interface with the real world.
+the alpha division explores the world of continuous-time signal processing and analog circuit design using free and open source tools such as XSchem, ngspice, Xyce and more. from basic amplifier topologies to advanced RF front-ends, we work on designing, simulating, and understanding the circuits that interface with the real world.
 
 ## focus areas
-- analog IC design (op-amps, bandgap references, LDOs)
-- RF and microwave circuit design (LNAs, mixers, VCOs)
-- PLL and frequency synthesis
+- analog IC design (ADCs, DACs, BGRs)
+- RF and microwave circuit design (PAs, LNAs, mixers, VCOs)
 - SPICE simulation and modeling
-- signal integrity and noise analysis
+- Schematic and layout design

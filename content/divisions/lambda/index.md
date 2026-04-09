@@ -14,6 +14,6 @@ the lambda division tackles the digital side of hardware design. we write RTL, d
 
 ## focus areas
 - digital logic design with Verilog/SystemVerilog
-- processor and SoC architecture
+- digital architecture
 - functional verification and testbenches
 - FPGA prototyping
